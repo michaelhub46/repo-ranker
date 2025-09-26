@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import SearchPanel from './components/SearchPanel';
 import './App.css';
 
 function App() {
+  const [results, setResults] = useState(null);
+
+  const handleSearch = (searchParams) => {
+    console.log('Search:', searchParams);
+    setResults(JSON.stringify(searchParams, null, 2));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <SearchPanel onSearch={handleSearch} />
+      
+      <div className="results-section">
+        {results && (
+          <div className="results-section__content">
+            <div className="results-section__header">
+              <h3 className="results-section__title">Search Results</h3>
+            </div>
+            <pre className="results-section__code">{results}</pre>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
