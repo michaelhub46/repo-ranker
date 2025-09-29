@@ -47,10 +47,8 @@ export class ScoringService {
     
     const scored = repositories.map(repo => this.calculateScore(repo));
     
-    // Sort by total score (descending)
-    scored.sort((a, b) => b.popularity_score - a.popularity_score);
-    
-    this.logger.log(`Scored repositories - Top score: ${scored[0]?.popularity_score.toFixed(3)}, Bottom score: ${scored[scored.length - 1]?.popularity_score.toFixed(3)}`);
+    // Return repositories in original GitHub order (no sorting by score)
+    this.logger.log(`Scored ${scored.length} repositories - maintaining original GitHub order`);
     
     return scored;
   }
