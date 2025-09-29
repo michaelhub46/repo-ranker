@@ -4,15 +4,7 @@ import { Transform, Type } from 'class-transformer';
 export class SearchRepositoriesDto {
   @IsString()
   @Transform(({ value }) => value?.trim())
-  q: string;
-
-  @IsOptional()
-  @IsString()
-  language?: string;
-
-  @IsOptional()
-  @IsString()
-  created?: string;
+  q: string; // Contains the full query including language: and created: qualifiers
 
   @IsOptional()
   @IsIn(['stars', 'forks', 'help-wanted-issues', 'updated'])

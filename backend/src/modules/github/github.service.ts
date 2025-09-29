@@ -37,7 +37,7 @@ export class GitHubService {
     }
 
     const params = {
-      q: q.trim(),
+      q: q.trim(), // q should already contain language: and created: qualifiers
       sort,
       order,
       per_page: Math.min(per_page || 25, 100), // GitHub API limit, default 25

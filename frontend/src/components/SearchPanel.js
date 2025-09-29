@@ -34,23 +34,25 @@ const SearchPanel = ({ onSearch }) => {
       return;
     }
 
-    // Send parameters separately as our backend expects them
+    // Build GitHub-style query string with embedded filters
+    let fullQuery = searchQuery.trim();
+    
+    // Add language qualifier if selected (e.g., "language:JavaScript")
+    if (selectedLanguage) {
+      fullQuery += ` language:${selectedLanguage}`;
+    }
+    
+    // Add created date qualifier if selected (e.g., "created:>2025-09-21")
+    const dateValue = useCustomDate ? customDate : selectedDate;
+    if (dateValue) {
+      fullQuery += ` created:>${dateValue}`;
+    }
+
     const searchParams = {
-      q: searchQuery.trim(),
+      q: fullQuery,
       sort: sortBy,
       order: sortOrder
     };
-
-    // Add language filter if selected
-    if (selectedLanguage) {
-      searchParams.language = selectedLanguage;
-    }
-    
-    // Add created date filter if selected
-    const dateValue = useCustomDate ? customDate : selectedDate;
-    if (dateValue) {
-      searchParams.created = `>=${dateValue}`;
-    }
     
     onSearch(searchParams);
   };

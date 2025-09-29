@@ -6,10 +6,8 @@ class ApiService {
     try {
       const searchParams = new URLSearchParams();
       
-      // Add required parameters
+      // Add parameters (language and created are now embedded in q)
       if (params.q) searchParams.append('q', params.q);
-      if (params.language) searchParams.append('language', params.language);
-      if (params.created) searchParams.append('created', params.created);
       if (params.sort) searchParams.append('sort', params.sort);
       if (params.order) searchParams.append('order', params.order);
       if (params.per_page) searchParams.append('per_page', params.per_page);
