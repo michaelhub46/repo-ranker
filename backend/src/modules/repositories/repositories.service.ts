@@ -52,8 +52,8 @@ export class RepositoriesService {
         items: scoredRepositories,
         page_info: {
           current_page: searchDto.page || 1,
-          per_page: searchDto.per_page || 30,
-          total_pages: Math.ceil(githubResponse.total_count / (searchDto.per_page || 30))
+          per_page: searchDto.per_page || 25,
+          total_pages: Math.min(Math.ceil(Math.min(githubResponse.total_count, 1000) / (searchDto.per_page || 25)), 40) // Max 1000 results, 40 pages at 25 per page
         },
         rate_limit: githubResponse.rate_limit,
         scoring_info: {

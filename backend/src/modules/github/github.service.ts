@@ -29,7 +29,7 @@ export class GitHubService {
   }
 
   async searchRepositories(searchDto: GitHubSearchDto): Promise<GitHubSearchResponse> {
-    const { q, sort = 'stars', order = 'desc', per_page = 30, page = 1 } = searchDto;
+    const { q, sort = 'stars', order = 'desc', per_page = 25, page = 1 } = searchDto;
 
     // Validate required parameter
     if (!q || q.trim().length === 0) {
@@ -40,7 +40,7 @@ export class GitHubService {
       q: q.trim(),
       sort,
       order,
-      per_page: Math.min(per_page, 100), // GitHub API limit
+      per_page: Math.min(per_page || 25, 100), // GitHub API limit, default 25
       page: Math.max(page, 1)
     };
 
