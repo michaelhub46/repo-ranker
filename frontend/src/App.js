@@ -16,14 +16,11 @@ function App() {
     setError(null);
     
     try {
-      console.log('Searching with params:', params);
       const response = await apiService.searchRepositories(params);
-      console.log('Search response:', response);
       
       setResults(response);
       setSearchParams(params);
     } catch (err) {
-      console.error('Search failed:', err);
       setError(err.message || 'Failed to search repositories');
       setResults(null);
     } finally {

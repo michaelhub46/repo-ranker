@@ -93,8 +93,8 @@ const SearchPanel = ({ onSearch }) => {
             onChange={(e) => setSelectedLanguage(e.target.value)}
           >
             <option value="">Any Language</option>
-            {languages.map(lang => (
-              <option key={lang} value={lang}>{lang}</option>
+            {languages.map((lang, index) => (
+              <option key={`lang-${index}-${lang}`} value={lang}>{lang}</option>
             ))}
           </select>
         </div>
@@ -116,8 +116,8 @@ const SearchPanel = ({ onSearch }) => {
                 onChange={(e) => setSelectedDate(e.target.value)}
                 disabled={useCustomDate}
               >
-                {dateRanges.map(range => (
-                  <option key={range.value} value={range.value}>{range.label}</option>
+                {dateRanges.map((range, index) => (
+                  <option key={`date-${index}`} value={range.value}>{range.label}</option>
                 ))}
               </select>
             </div>
@@ -149,8 +149,8 @@ const SearchPanel = ({ onSearch }) => {
             value={sortBy} 
             onChange={(e) => setSortBy(e.target.value)}
           >
-            {sortOptions.map(option => (
-              <option key={option.value} value={option.value}>{option.label}</option>
+            {sortOptions.map((option, index) => (
+              <option key={`sort-${index}-${option.value}`} value={option.value}>{option.label}</option>
             ))}
           </select>
         </div>
