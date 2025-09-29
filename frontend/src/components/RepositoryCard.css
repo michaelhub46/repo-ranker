@@ -1,0 +1,148 @@
+/* Repository Card Styles */
+.repository-card {
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.repository-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.repository-card__header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.repository-card__avatar {
+  flex-shrink: 0;
+}
+
+.repository-card__avatar-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.repository-card__title {
+  flex: 1;
+  min-width: 0;
+}
+
+.repository-card__name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0366d6;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 4px;
+  word-break: break-word;
+}
+
+.repository-card__name:hover {
+  text-decoration: underline;
+}
+
+.repository-card__language {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #586069;
+}
+
+.repository-card__language-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.repository-card__score {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.repository-card__score-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #28a745;
+  display: block;
+}
+
+.repository-card__score-label {
+  font-size: 11px;
+  color: #586069;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.repository-card__description {
+  color: #586069;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  word-wrap: break-word;
+}
+
+.repository-card__stats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.repository-card__stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #586069;
+}
+
+.repository-card__stat-icon {
+  font-size: 14px;
+}
+
+.repository-card__stat-value {
+  font-weight: 500;
+}
+
+.repository-card__updated {
+  margin-left: auto;
+  font-size: 12px;
+  color: #586069;
+  white-space: nowrap;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .repository-card {
+    padding: 16px;
+  }
+
+  .repository-card__header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .repository-card__score {
+    align-self: flex-end;
+  }
+
+  .repository-card__stats {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .repository-card__updated {
+    margin-left: 0;
+  }
+}

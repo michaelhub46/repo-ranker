@@ -24,29 +24,33 @@ const SearchPanel = ({ onSearch }) => {
   const sortOptions = [
     { value: 'stars', label: 'Stars' },
     { value: 'forks', label: 'Forks' },
+    { value: 'help-wanted-issues', label: 'Help Wanted Issues' },
     { value: 'updated', label: 'Updated' }
   ];
 
   const handleSearch = () => {
-    // Build the normalized query string like GitHub API
-    let normalizedQuery = searchQuery.trim();
-    
-    // Add language qualifier if selected
-    if (selectedLanguage) {
-      normalizedQuery += normalizedQuery ? `+language:${selectedLanguage}` : `language:${selectedLanguage}`;
+    if (!searchQuery.trim()) {
+      alert('Please enter a search query');
+      return;
     }
-    
-    // Add created date qualifier if selected
-    const dateValue = useCustomDate ? customDate : selectedDate;
-    if (dateValue) {
-      normalizedQuery += normalizedQuery ? `+created:>${dateValue}` : `created:>${dateValue}`;
-    }
-    
+
+    // Send parameters separately as our backend expects them
     const searchParams = {
-      q: normalizedQuery,
+      q: searchQuery.trim(),
       sort: sortBy,
       order: sortOrder
     };
+
+    // Add language filter if selected
+    if (selectedLanguage) {
+      searchParams.language = selectedLanguage;
+    }
+    
+    // Add created date filter if selected
+    const dateValue = useCustomDate ? customDate : selectedDate;
+    if (dateValue) {
+      searchParams.created = `>=${dateValue}`;
+    }
     
     onSearch(searchParams);
   };

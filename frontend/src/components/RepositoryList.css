@@ -1,0 +1,142 @@
+/* Repository List Styles */
+.repository-list {
+  width: 100%;
+}
+
+.repository-list__loading,
+.repository-list__error,
+.repository-list__empty {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.repository-list__spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #0366d6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.repository-list__error {
+  color: #d73a49;
+}
+
+.repository-list__error h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+}
+
+.repository-list__empty {
+  color: #586069;
+}
+
+.repository-list__empty h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+}
+
+.repository-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e1e4e8;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.repository-list__title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #24292e;
+  margin: 0;
+}
+
+.repository-list__incomplete {
+  color: #f66a0a;
+  font-weight: normal;
+}
+
+.repository-list__info {
+  font-size: 13px;
+  color: #586069;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.repository-list__rate-limit {
+  white-space: nowrap;
+}
+
+.repository-list__items {
+  margin-bottom: 24px;
+}
+
+.repository-list__scoring-info {
+  border-top: 1px solid #e1e4e8;
+  padding-top: 16px;
+  margin-top: 24px;
+}
+
+.repository-list__scoring-details {
+  background: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.repository-list__scoring-details summary {
+  font-size: 13px;
+  font-weight: 600;
+  color: #586069;
+  cursor: pointer;
+  user-select: none;
+}
+
+.repository-list__scoring-details summary:hover {
+  color: #0366d6;
+}
+
+.repository-list__scoring-factors {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.repository-list__scoring-factor {
+  font-size: 12px;
+  color: #586069;
+  background: #ffffff;
+  padding: 4px 8px;
+  border: 1px solid #e1e4e8;
+  border-radius: 4px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .repository-list__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .repository-list__info {
+    align-self: stretch;
+    justify-content: space-between;
+  }
+
+  .repository-list__scoring-factors {
+    flex-direction: column;
+    gap: 4px;
+  }
+}

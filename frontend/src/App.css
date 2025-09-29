@@ -344,3 +344,28 @@ body {
     padding: var(--spacing-lg);
   }
 }
+
+/* ==========================================================================
+   ADDITIONAL RESULTS SECTION STYLES
+   ========================================================================== */
+
+.results-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.results-section__content {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
